@@ -85,12 +85,16 @@ public class Chemotaxis extends PApplet {
 
  	public void show(){
  		noStroke();
- 		fill(0,153,153);
- 		ellipse(eX, eY, (int)(Math.random()*10+3), (int)(Math.random()*10+3));
+ 		fill(0,153,153, 125);
+ 		ellipse(eX, eY, 10, 10);
+ 		fill((int)(Math.random()*255),153,(int)(Math.random()*255));
+ 		ellipse(eX, eY, 5, 5);
+ 		
  		stroke(102,204,0);
- 		fill(76,153,0);
- 		ellipse(bX, bY, 10, 5);
- 		ellipse(bX, bY+3, 5, 5);
+ 		fill(76,153,0, 125);
+ 		ellipse(bX, bY, 5, 5);
+ 		fill((int)(Math.random()*255),153,(int)(Math.random()*255));
+ 		ellipse(bX, bY, 2, 2);
  	}
 
 
