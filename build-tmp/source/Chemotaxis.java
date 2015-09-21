@@ -18,7 +18,7 @@ public class Chemotaxis extends PApplet {
  Prey [] cluster;
 
  int bNum = 50;
- int cNum = 1000;
+ int cNum = 10000;
 
  int p = 10;
 
@@ -40,7 +40,7 @@ public class Chemotaxis extends PApplet {
  }
 
  public void mousePressed() {
- 	if(p<990){
+ 	if(p<9990){
 		p = p + 10;
 	}
  }
@@ -50,17 +50,18 @@ public class Chemotaxis extends PApplet {
  {   
  	background(0); 
 
-
+ 	for(int i = 0; i<colony.length; i++){
+		colony[i].walk();
+		colony[i].show();
+	}
 for(int j = 0; j < p; j++ ){
 	cluster[j].run();
 	cluster[j].show();
 }
 
 
- 	for(int i = 0; i<colony.length; i++){
-		colony[i].walk();
-		colony[i].show();
-}
+
+
 
 	
 
@@ -71,8 +72,8 @@ for(int j = 0; j < p; j++ ){
  	int bX, bY;
  	Prey(){
 
- 		bX = 350;
- 		bY = 200;
+ 		bX = (int)(Math.random()*500);
+ 		bY = (int)(Math.random()*500);
 
  	}
 
@@ -81,17 +82,12 @@ for(int j = 0; j < p; j++ ){
 
  		//blob bacteria
 
- 		if(mouseX<bX){
- 			bX = bX + (int)(Math.random()*4)-2;
- 		} else{
- 			bX = bX + (int)(Math.random()*4)-1;
- 		}
+ 			bX = bX + (int)(Math.random()*5)-2;
  		
- 		if(mouseY<bY){
- 			bY = bY + (int)(Math.random()*4)-2;
- 		} else{
- 			bY = bY + (int)(Math.random()*4)-1;
- 		}
+ 		
+ 		
+ 			bY = bY + (int)(Math.random()*5)-2;
+ 		
  		
  	}
 
@@ -104,7 +100,7 @@ for(int j = 0; j < p; j++ ){
  		fill((int)(Math.random()*255),153,(int)(Math.random()*255));
  		ellipse(bX, bY, 2, 2);
 
- 		if(get(bX + 3, bY + 3) != color(0,0,0) || get(bX + 3, bY - 3) != color(0,0,0) || get(bX - 3, bY + 3) != color(0,0,0) || get(bX - 3, bY - 3) != color(0,0,0)){
+ 		if(get(bX + 3, bY + 3) == color(0,204,104) || get(bX + 3, bY - 3) == color(0,204,104) || get(bX - 3, bY + 3) == color(0,204,104) || get(bX - 3, bY - 3) == color(0,204,104)){
 	bX = 1000000;
 	bY = 1000000;
 }
@@ -145,7 +141,7 @@ for(int j = 0; j < p; j++ ){
  	public void show(){
  		noStroke();
 
- 		fill((int)(Math.random()*255),153,(int)(Math.random()*255));
+ 		fill(0,204,104);
  		ellipse(eX, eY, 5, 5);
 
  	}
