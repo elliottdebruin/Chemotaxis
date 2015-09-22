@@ -16,10 +16,10 @@ public class Chemotaxis extends PApplet {
 
  Predator [] colony;
  Prey [] cluster;
-
- int bNum = 50;
+int sum = 0;
+ int bNum = 20;
  int cNum = 10000;
-
+	
  int p = 10;
 
  public void setup()   
@@ -61,8 +61,6 @@ for(int j = 0; j < p; j++ ){
 
 
 
-
-
 	
 
  }  
@@ -70,11 +68,12 @@ for(int j = 0; j < p; j++ ){
 
  class Prey {     
  	int bX, bY;
+	boolean alive;
  	Prey(){
 
- 		bX = (int)(Math.random()*500);
- 		bY = (int)(Math.random()*500);
-
+ 		bX = (int)(Math.random()*200+150);
+ 		bY = (int)(Math.random()*200+150);
+ 		alive = true;
  	}
 
  	public void run(){
@@ -96,13 +95,12 @@ for(int j = 0; j < p; j++ ){
 
  		
 
-
+ 		if(alive == true){
  		fill((int)(Math.random()*255),153,(int)(Math.random()*255));
- 		ellipse(bX, bY, 2, 2);
-
+ 		ellipse(bX, bY, 4, 4);
+}
  		if(get(bX + 3, bY + 3) == color(0,204,104) || get(bX + 3, bY - 3) == color(0,204,104) || get(bX - 3, bY + 3) == color(0,204,104) || get(bX - 3, bY - 3) == color(0,204,104)){
-	bX = 1000000;
-	bY = 1000000;
+alive = false;
 }
  	}
 
@@ -111,6 +109,7 @@ for(int j = 0; j < p; j++ ){
 
  class Predator {     
  	int eX, eY;
+
  	Predator(){
  		eX = 100;
  		eY = 100;
@@ -142,7 +141,7 @@ for(int j = 0; j < p; j++ ){
  		noStroke();
 
  		fill(0,204,104);
- 		ellipse(eX, eY, 5, 5);
+ 		ellipse(eX, eY, 8, 8);
 
  	}
 
