@@ -83,7 +83,7 @@ for(int j = 0; j < p; j++ ){
  		fill((int)(Math.random()*255),153,(int)(Math.random()*255));
  		ellipse(bX, bY, 4, 4);
 }
- 		if(get(bX + 3, bY + 3) == color(0,204,104) || get(bX + 3, bY - 3) == color(0,204,104) || get(bX - 3, bY + 3) == color(0,204,104) || get(bX - 3, bY - 3) == color(0,204,104)){
+ 		if(get(bX+2, bY+2) == color(0,204,104)){
 alive = false;
 }
  	}
