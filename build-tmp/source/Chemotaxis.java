@@ -14,139 +14,134 @@ import java.io.IOException;
 
 public class Chemotaxis extends PApplet {
 
- Predator [] colony;
- Prey [] cluster;
-int sum = 0;
+ Predator[] colony;
+ Prey[] cluster;
+ int sum = 0;
  int bNum = 20;
- int cNum = 100;
-	
- int p = 10;
+ int cNum = 20;
 
- public void setup()   
- {     
-	size(512, 512); 
-// Predator array
-	colony = new Predator[bNum];
-	for(int i = 0; i < colony.length; i++){
-		colony[i] = new Predator();
-	}
+ int p = 20;
 
-// Prey array
-	cluster = new Prey[cNum];
-	for(int j = 0; j < cluster.length; j++){
-		cluster[j] = new Prey();
-	}
-	
- }
+ public void setup() {
+     size(512, 512);
+     // Predator array
+     colony = new Predator[bNum];
+     for (int i = 0; i < colony.length; i++) {
+         colony[i] = new Predator();
+     }
 
- public void mousePressed() {
- 	if(p<90){
-		p = p + 10;
-	}
+     // Prey array
+     cluster = new Prey[cNum];
+     for (int j = 0; j < cluster.length; j++) {
+         cluster[j] = new Prey();
+     }
+
  }
 
 
- public void draw()   
- {   
- 	background(0); 
-
- 	for(int i = 0; i<colony.length; i++){
-		colony[i].walk();
-		colony[i].show();
-	}
-for(int j = 0; j < p; j++ ){
-	cluster[j].run();
-	cluster[j].show();
-}
 
 
+ public void draw() {
+     background(0);
 
-	
-
- }  
-
-
- class Prey {     
- 	int bX, bY;
-	boolean alive;
- 	Prey(){
-
- 		bX = (int)(Math.random()*200+150);
- 		bY = (int)(Math.random()*200+150);
- 		alive = true;
- 	}
-
- 	public void run(){
+     for (int i = 0; i < colony.length; i++) {
+         colony[i].walk();
+         colony[i].show();
+     }
+     for (int j = 0; j < p; j++) {
+         cluster[j].run();
+         cluster[j].show();
+     }
 
 
- 		//blob bacteria
-
- 			bX = bX + (int)(Math.random()*5)-2;
- 		
- 		
- 		
- 			bY = bY + (int)(Math.random()*5)-2;
- 		
- 		
- 	}
-
- 	public void show(){
- 		noStroke();
-
- 		
-
- 		if(alive == true){
- 		fill((int)(Math.random()*255),153,(int)(Math.random()*255));
- 		ellipse(bX, bY, 4, 4);
-}
- 		if(get(bX+2, bY+2) == color(0,204,104)){
-alive = false;
-}
- 	}
 
 
- }    
-
- class Predator {     
- 	int eX, eY;
-
- 	Predator(){
- 		eX = 100;
- 		eY = 100;
+ }
 
 
- 	}
+ class Prey {
+     int bX, bY;
+     boolean alive;
+     Prey() {
 
- 	public void walk(){
+         bX = (int)(Math.random() * 200 + 150);
+         bY = (int)(Math.random() * 200 + 150);
+         alive = true;
+     }
 
- 		//ellipse bacteria
-
- 		if(mouseX<eX){
- 			eX = eX + (int)(Math.random()*5)-3;
- 		} else{
- 			eX = eX + (int)(Math.random()*5)-1;
- 		}
- 		
- 		if(mouseY<eY){
- 			eY = eY + (int)(Math.random()*5)-3;
- 		} else{
- 			eY = eY + (int)(Math.random()*5)-1;
- 		}
+     public void run() {
 
 
- 		
- 	}
+         //blob bacteria
 
- 	public void show(){
- 		noStroke();
-
- 		fill(0,204,104);
- 		ellipse(eX, eY, 8, 8);
-
- 	}
+         bX = bX + (int)(Math.random() * 5) - 2;
 
 
- }    
+
+         bY = bY + (int)(Math.random() * 5) - 2;
+
+
+     }
+
+     public void show() {
+         noStroke();
+
+
+
+         if (alive == true) {
+             fill((int)(Math.random() * 255), 153, (int)(Math.random() * 255));
+             ellipse(bX, bY, 4, 4);
+         }
+         if (get(bX + 2, bY + 2) == color(0, 204, 104)) {
+             alive = false;
+         } else if (keyPressed) {
+         	 alive = true;
+         }
+     }
+
+
+ }
+
+ class Predator {
+     int eX, eY;
+
+     Predator() {
+         eX = 100;
+         eY = 100;
+
+
+     }
+
+     public void walk() {
+
+         //ellipse bacteria
+
+         if (mouseX < eX) {
+             eX = eX + (int)(Math.random() * 5) - 3;
+         } else {
+             eX = eX + (int)(Math.random() * 5) - 1;
+         }
+
+         if (mouseY < eY) {
+             eY = eY + (int)(Math.random() * 5) - 3;
+         } else {
+             eY = eY + (int)(Math.random() * 5) - 1;
+         }
+
+
+
+     }
+
+     public void show() {
+         noStroke();
+
+         fill(0, 204, 104);
+         ellipse(eX, eY, 8, 8);
+
+     }
+
+
+ }
   static public void main(String[] passedArgs) {
     String[] appletArgs = new String[] { "Chemotaxis" };
     if (passedArgs != null) {
