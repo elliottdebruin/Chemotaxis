@@ -18,7 +18,7 @@ public class Chemotaxis extends PApplet {
  Prey [] cluster;
 int sum = 0;
  int bNum = 20;
- int cNum = 10000;
+ int cNum = 100;
 	
  int p = 10;
 
@@ -40,7 +40,7 @@ int sum = 0;
  }
 
  public void mousePressed() {
- 	if(p<9990){
+ 	if(p<90){
 		p = p + 10;
 	}
  }
